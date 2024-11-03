@@ -4,26 +4,26 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.EntityConfigurations
 {
-    public class ChatUserBindConfiguration : IEntityTypeConfiguration<ChatUserBind>
+    internal class ChatUserBindConfiguration : IEntityTypeConfiguration<ChatUserBind>
     {
         public void Configure(EntityTypeBuilder<ChatUserBind> builder)
         {
             builder.ToTable("chat_user_bind");
-            builder.HasIndex(x => new { x.ChatId, x.UserTypeBindId });
+            builder.HasKey(x => new { x.ChatId, x.MemberId });
 
-            builder.Property(x => x.ChatId).IsRequired();
+            builder.Property(x => x.ChatId).IsRequired(true);
             builder.HasOne(x => x.Chat)
                 .WithMany()
                 .HasForeignKey(x => x.ChatId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(x => x.UserTypeBindId).IsRequired();
-            builder.HasOne(x => x.UserTypeBind)
+            builder.Property(x => x.MemberId).IsRequired(true);
+            builder.HasOne(x => x.Member)
                 .WithMany()
-                .HasForeignKey(x => x.UserTypeBindId)
+                .HasForeignKey(x => x.MemberId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(x => x.JoinedAt).IsRequired();
+            builder.Property(x => x.JoinedAt).IsRequired(true);
         }
     }
 }

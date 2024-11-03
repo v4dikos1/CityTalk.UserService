@@ -1,17 +1,20 @@
-﻿namespace Domain.Entities
+﻿using Domain.Abstractions;
+
+namespace Domain.Entities
 {
-    public class Message : BaseEntity<Guid>
+    public class Message : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack
     {
         /// <summary>
         /// Идентификатор чата
         /// </summary>
         public required Guid ChatId { get; set; }
+        public Chat? Chat { get; set; }
 
         /// <summary>
-        /// Идентификатор пользователя, отправившего сообщение (связка с типом пользователя)
+        /// Идентификатор пользователя, отправившего сообщение
         /// </summary>
-        public required Guid UserTypeBindId { get; set; }
-        public UserTypeBind UserTypeBind { get; set; } = null!;
+        public required Guid SenderId { get; set; }
+        public Account? Sender { get; set; }
 
         /// <summary>
         /// Идентификатор пересылаемого сообщения
@@ -22,16 +25,20 @@
         /// <summary>
         /// Текст
         /// </summary>
-        public required string Content { get; set; } = string.Empty;
+        public required string Content { get; set; }
 
         /// <summary>
         /// Вложения
         /// </summary>
-        public string? Attachment { get; set; }
+        public ICollection<Attachment>? Attachments { get; set; }
 
         /// <summary>
-        /// Прочитано
+        /// Пользователи, прочитавшие сообщение
         /// </summary>
-        public bool IsReaded { get; set; }
+        public ICollection<UserReadMessage>? WhoRead { get; set; }
+
+        public required DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
+        public required bool IsDeleted { get; set; }
     }
 }

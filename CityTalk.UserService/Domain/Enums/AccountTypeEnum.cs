@@ -8,15 +8,21 @@ namespace Domain.Enums
     public enum AccountTypeEnum
     {
         /// <summary>
+        /// Ошибка при создании
+        /// </summary>
+        [Description("Ошибка")]
+        Error = 0,
+
+        /// <summary>
         /// Обычный пользователь
         /// </summary>
         [Description("Обычный пользователь")]
-        Default = 0,
+        Default = 1,
 
         /// <summary>
         /// Бизнес-пользователь
         /// </summary>
         [Description("Бизнес-пользователь")]
-        Business = 1
+        Business = 2
     }
 }

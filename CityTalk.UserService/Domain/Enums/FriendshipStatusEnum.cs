@@ -7,13 +7,19 @@ namespace Domain.Enums
         /// <summary>
         /// Заявка ожидает подтверждения
         /// </summary>
-        [Description("Ожидает подтверждения")]
-        Waiting = 0,
+        [Description("Заявка отправлена")]
+        Sended = 0,
 
         /// <summary>
-        /// Заявка принята
+        /// Друг
         /// </summary>
-        [Description("Подтверждено")]
-        Accepted = 1
+        [Description("Друг")]
+        Friend = 1,
+
+        /// <summary>
+        /// Подписчик
+        /// </summary>
+        [Description("Подписчик")]
+        Subscriber = 2
     }
 }

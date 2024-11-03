@@ -6,13 +6,13 @@
         /// Идентификатор чата
         /// </summary>
         public required Guid ChatId { get; set; }
-        public Chat Chat { get; set; } = null!;
+        public Chat? Chat { get; set; }
 
         /// <summary>
-        /// Идентификатор пользователя (связка с типом пользователя)
+        /// Идентификатор пользователя
         /// </summary>
-        public required Guid UserTypeBindId { get; set; }
-        public UserTypeBind UserTypeBind { get; set; } = null!;
+        public required Guid MemberId { get; set; }
+        public Account? Member { get; set; }
 
         /// <summary>
         /// Дата вступления в чат

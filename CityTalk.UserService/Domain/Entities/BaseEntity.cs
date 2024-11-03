@@ -1,25 +1,10 @@
 ﻿namespace Domain.Entities
 {
-    public class BaseEntity<T>
+    public abstract class BaseEntity<T> where T: notnull
     {
         /// <summary>
         /// Идентификатор
         /// </summary>
-        public T Id { get; set; } = default!;
-
-        /// <summary>
-        /// Дата создания
-        /// </summary>
-        public DateTimeOffset CreatedAt { get; set; }
-
-        /// <summary>
-        /// Дата обновления
-        /// </summary>
-        public DateTimeOffset? UpdatedAt { get; set;}
-
-        /// <summary>
-        /// Удалена ли сущность?
-        /// </summary>
-        public bool IsDeleted { get; set; }
+        public required T Id { get; set; }
     }
 }

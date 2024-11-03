@@ -1,20 +1,21 @@
-﻿using Domain.Enums;
+﻿using Domain.Abstractions;
+using Domain.Enums;
 
 namespace Domain.Entities
 {
-    public class Friendship
+    public class Friendship : IHaveDateTrack, IHaveDeleteTrack
     {
         /// <summary>
         /// Идентификатор пользователя, отправившего заявку
         /// </summary>
         public required Guid SourceUserId { get; set; }
-        public User SourceUser { get; set; } = null!;
+        public Account SourceUser { get; set; } = null!;
 
         /// <summary>
         /// Идентификатор пользователя, получившего заявку
         /// </summary>
         public required Guid TargetUserId { get; set; }
-        public User TargetUser { get; set; } = null!;
+        public Account TargetUser { get; set; } = null!;
 
         /// <summary>
         /// Состояние заявки
@@ -30,5 +31,7 @@ namespace Domain.Entities
         /// Дата изменения заявки
         /// </summary>
         public DateTimeOffset? UpdatedAt { get; set; }
+
+        public required bool IsDeleted { get; set; }
     }
 }
