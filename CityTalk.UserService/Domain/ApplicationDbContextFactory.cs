@@ -10,7 +10,6 @@ namespace Domain
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory())!, "Api"))
-
                 .AddJsonFile("appsettings.json")
                 .Build();
 
