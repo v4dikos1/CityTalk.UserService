@@ -14,7 +14,7 @@ namespace Domain.EntityConfigurations
 
             builder.Property(x => x.OwnerId).IsRequired(true);
             builder.HasOne(x => x.Owner)
-                .WithMany()
+                .WithMany(x => x.Organizations)
                 .HasForeignKey(x => x.OwnerId)
                 .OnDelete(DeleteBehavior.Cascade);
 
