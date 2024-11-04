@@ -26,6 +26,7 @@ namespace Domain.EntityConfigurations
 
             builder.Property(x => x.Content).IsRequired(true);
 
+            /*
             builder.Property(x => x.Attachments).IsRequired(false);
             builder.HasMany(x => x.Attachments)
                 .WithOne()
@@ -34,7 +35,7 @@ namespace Domain.EntityConfigurations
             builder.Property(x => x.WhoRead).IsRequired(false);
             builder.HasMany(x => x.WhoRead)
                 .WithOne()
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Cascade);*/
 
             builder.Property(x => x.CreatedAt).IsRequired(true);
             builder.Property(x => x.UpdatedAt).IsRequired(false);

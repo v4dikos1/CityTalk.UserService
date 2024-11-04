@@ -17,10 +17,11 @@ namespace Domain.EntityConfigurations
             builder.Property(x => x.Name).IsRequired(false);
             builder.Property(x => x.Description).IsRequired(false);
 
+            /*
             builder.Property(x => x.MemberBinds).IsRequired(false);
             builder.HasOne(x => x.MemberBinds)
                 .WithMany()
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Cascade);*/
 
             builder.Property(x => x.CreatedAt).IsRequired(true);
             builder.Property(x => x.UpdatedAt).IsRequired(false);
