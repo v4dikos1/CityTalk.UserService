@@ -9,7 +9,10 @@ namespace Domain.EntityConfigurations
         public void Configure(EntityTypeBuilder<ChatUserBind> builder)
         {
             builder.ToTable("chat_user_bind");
-            builder.HasKey(x => new { x.ChatId, x.MemberId });
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).IsRequired(true);
+
+            builder.HasIndex(x => new { x.ChatId, x.MemberId }).IsUnique(true);
 
             builder.Property(x => x.ChatId).IsRequired(true);
             builder.HasOne(x => x.Chat)

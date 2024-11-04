@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class ChatUserBind
+    public class ChatUserBind : BaseEntity<Guid>
     {
         /// <summary>
         /// Идентификатор чата

@@ -9,8 +9,10 @@ namespace Domain.EntityConfigurations
         public void Configure(EntityTypeBuilder<UserReadMessage> builder)
         {
             builder.ToTable("user_read_message");
-            builder.HasKey(x => new { x.UserId, x.MessageId });
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.UserId).IsRequired(true);
 
+            builder.HasIndex(x => new { x.UserId, x.MessageId }).IsUnique(true);
             builder.Property(x => x.UserId).IsRequired(true);
             builder.HasOne(x => x.User)
                 .WithMany()
@@ -23,7 +25,7 @@ namespace Domain.EntityConfigurations
                 .HasForeignKey(x => x.MessageId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(x => x.ReadedAt).IsRequired(true);
+            builder.Property(x => x.ReadAt).IsRequired(true);
         }
     }
 }

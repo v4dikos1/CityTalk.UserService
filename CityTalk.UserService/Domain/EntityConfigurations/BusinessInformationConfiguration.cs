@@ -9,7 +9,10 @@ namespace Domain.EntityConfigurations
         public void Configure(EntityTypeBuilder<BusinessInformation> builder)
         {
             builder.ToTable("business_information");
-            builder.HasKey(x => x.AccountId);
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).IsRequired(true);
+
+            builder.HasIndex(x => x.AccountId).IsUnique(true);
             builder.Property(x => x.AccountId).IsRequired(true);
             builder.HasOne(x => x.Account)
                 .WithOne()

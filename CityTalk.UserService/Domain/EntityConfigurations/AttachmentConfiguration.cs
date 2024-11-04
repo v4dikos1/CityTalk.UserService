@@ -12,6 +12,7 @@ namespace Domain.EntityConfigurations
             builder.Property(x => x.Id).IsRequired(true);
 
             builder.Property(x => x.Path).IsRequired(true);
+            builder.Property(x => x.Type).IsRequired(true);
         }
     }
 }

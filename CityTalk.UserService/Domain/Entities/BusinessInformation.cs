@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class BusinessInformation
+    public class BusinessInformation : BaseEntity<Guid>
     {
         /// <summary>
         /// Идентификатор бизнес-аккаунта

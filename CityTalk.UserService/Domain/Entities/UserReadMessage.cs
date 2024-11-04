@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class UserReadMessage
+    public class UserReadMessage : BaseEntity<Guid>
     {
         /// <summary>
         /// Идентификатор пользователя, прочитавшего сообщение
@@ -17,6 +17,6 @@
         /// <summary>
         /// Время, когда сообщение было прочитано
         /// </summary>
-        public required DateTimeOffset ReadedAt { get; set; }
+        public required DateTimeOffset ReadAt { get; set; }
     }
 }

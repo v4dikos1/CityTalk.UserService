@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using Domain.Enums;
+
+namespace Domain.Entities
 {
     public class Attachment : BaseEntity<Guid>
     {
@@ -6,5 +8,10 @@
         /// Путь до файла
         /// </summary>
         public required string Path { get; set; }
+
+        /// <summary>
+        /// Тип вложения
+        /// </summary>
+        public required AttachmentTypeEnum Type { get; set; }
     }
 }

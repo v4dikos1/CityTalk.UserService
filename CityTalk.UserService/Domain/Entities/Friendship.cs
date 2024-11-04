@@ -3,7 +3,7 @@ using Domain.Enums;
 
 namespace Domain.Entities
 {
-    public class Friendship : IHaveDateTrack, IHaveDeleteTrack
+    public class Friendship : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack
     {
         /// <summary>
         /// Идентификатор пользователя, отправившего заявку

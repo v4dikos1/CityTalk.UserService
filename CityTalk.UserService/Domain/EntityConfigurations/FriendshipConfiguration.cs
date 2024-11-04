@@ -9,7 +9,10 @@ namespace Domain.EntityConfigurations
         public void Configure(EntityTypeBuilder<Friendship> builder)
         {
             builder.ToTable("friendship");
-            builder.HasKey(x => new { x.TargetUserId, x.SourceUserId });
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).IsRequired(true);
+
+            builder.HasIndex(x => new { x.TargetUserId, x.SourceUserId }).IsUnique(true);
 
             builder.Property(x => x.SourceUserId).IsRequired(true);
             builder.HasOne(x => x.SourceUser)
