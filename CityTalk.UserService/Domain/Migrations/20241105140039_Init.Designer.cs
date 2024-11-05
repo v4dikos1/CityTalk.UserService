@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241104130001_Init")]
+    [Migration("20241105140039_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -110,10 +110,6 @@ namespace Domain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("account_id");
 
-                    b.Property<Guid?>("AccountId1")
-                        .HasColumnType("uuid")
-                        .HasColumnName("account_id1");
-
                     b.Property<string>("TIN")
                         .IsRequired()
                         .HasColumnType("text")
@@ -125,10 +121,6 @@ namespace Domain.Migrations
                     b.HasIndex("AccountId")
                         .IsUnique()
                         .HasDatabaseName("ix_business_information_account_id");
-
-                    b.HasIndex("AccountId1")
-                        .IsUnique()
-                        .HasDatabaseName("ix_business_information_account_id1");
 
                     b.HasIndex("TIN")
                         .IsUnique()
@@ -189,10 +181,6 @@ namespace Domain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("chat_id");
 
-                    b.Property<Guid?>("ChatId1")
-                        .HasColumnType("uuid")
-                        .HasColumnName("chat_id1");
-
                     b.Property<DateTimeOffset>("JoinedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("joined_at");
@@ -203,9 +191,6 @@ namespace Domain.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_chat_user_bind");
-
-                    b.HasIndex("ChatId1")
-                        .HasDatabaseName("ix_chat_user_bind_chat_id1");
 
                     b.HasIndex("MemberId")
                         .HasDatabaseName("ix_chat_user_bind_member_id");
@@ -319,10 +304,6 @@ namespace Domain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<Guid?>("AccountId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("account_id");
-
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
@@ -351,9 +332,6 @@ namespace Domain.Migrations
                     b.HasKey("Id")
                         .HasName("pk_organization");
 
-                    b.HasIndex("AccountId")
-                        .HasDatabaseName("ix_organization_account_id");
-
                     b.HasIndex("OwnerId")
                         .HasDatabaseName("ix_organization_owner_id");
 
@@ -371,10 +349,6 @@ namespace Domain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("message_id");
 
-                    b.Property<Guid?>("MessageId1")
-                        .HasColumnType("uuid")
-                        .HasColumnName("message_id1");
-
                     b.Property<DateTimeOffset>("ReadAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("read_at");
@@ -388,9 +362,6 @@ namespace Domain.Migrations
 
                     b.HasIndex("MessageId")
                         .HasDatabaseName("ix_user_read_message_message_id");
-
-                    b.HasIndex("MessageId1")
-                        .HasDatabaseName("ix_user_read_message_message_id1");
 
                     b.HasIndex("UserId", "MessageId")
                         .IsUnique()
@@ -410,16 +381,11 @@ namespace Domain.Migrations
             modelBuilder.Entity("Domain.Entities.BusinessInformation", b =>
                 {
                     b.HasOne("Domain.Entities.Account", "Account")
-                        .WithOne()
+                        .WithOne("BusinessInformation")
                         .HasForeignKey("Domain.Entities.BusinessInformation", "AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_business_information_accounts_account_id");
-
-                    b.HasOne("Domain.Entities.Account", null)
-                        .WithOne("BusinessInformation")
-                        .HasForeignKey("Domain.Entities.BusinessInformation", "AccountId1")
-                        .HasConstraintName("fk_business_information_account_account_id1");
 
                     b.Navigation("Account");
                 });
@@ -427,16 +393,11 @@ namespace Domain.Migrations
             modelBuilder.Entity("Domain.Entities.ChatUserBind", b =>
                 {
                     b.HasOne("Domain.Entities.Chat", "Chat")
-                        .WithMany()
+                        .WithMany("MemberBinds")
                         .HasForeignKey("ChatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_chat_user_bind_chat_chat_id");
-
-                    b.HasOne("Domain.Entities.Chat", null)
-                        .WithMany("MemberBinds")
-                        .HasForeignKey("ChatId1")
-                        .HasConstraintName("fk_chat_user_bind_chat_chat_id1");
 
                     b.HasOne("Domain.Entities.Account", "Member")
                         .WithMany()
@@ -502,13 +463,8 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Domain.Entities.Organization", b =>
                 {
-                    b.HasOne("Domain.Entities.Account", null)
-                        .WithMany("Organizations")
-                        .HasForeignKey("AccountId")
-                        .HasConstraintName("fk_organization_account_account_id");
-
                     b.HasOne("Domain.Entities.Account", "Owner")
-                        .WithMany()
+                        .WithMany("Organizations")
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
@@ -520,16 +476,11 @@ namespace Domain.Migrations
             modelBuilder.Entity("Domain.Entities.UserReadMessage", b =>
                 {
                     b.HasOne("Domain.Entities.Message", "Message")
-                        .WithMany()
+                        .WithMany("WhoRead")
                         .HasForeignKey("MessageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_user_read_message_message_message_id");
-
-                    b.HasOne("Domain.Entities.Message", null)
-                        .WithMany("WhoRead")
-                        .HasForeignKey("MessageId1")
-                        .HasConstraintName("fk_user_read_message_message_message_id1");
 
                     b.HasOne("Domain.Entities.Account", "User")
                         .WithMany()

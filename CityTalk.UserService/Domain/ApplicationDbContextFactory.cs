@@ -8,13 +8,8 @@ namespace Domain
     {
         public ApplicationDbContext CreateDbContext(string[] args)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory())!, "Api"))
-                .AddJsonFile("appsettings.json")
-                .Build();
-
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("DbConnection"));
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("ConnectionString"));
 
             return new ApplicationDbContext(optionsBuilder.Options);
         }
