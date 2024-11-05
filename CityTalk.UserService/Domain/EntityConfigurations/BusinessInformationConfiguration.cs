@@ -15,7 +15,7 @@ namespace Domain.EntityConfigurations
             builder.HasIndex(x => x.AccountId).IsUnique(true);
             builder.Property(x => x.AccountId).IsRequired(true);
             builder.HasOne(x => x.Account)
-                .WithOne()
+                .WithOne(x => x.BusinessInformation)
                 .HasForeignKey<BusinessInformation>(x => x.AccountId);
 
             builder.Property(x => x.TIN).IsRequired(true);
