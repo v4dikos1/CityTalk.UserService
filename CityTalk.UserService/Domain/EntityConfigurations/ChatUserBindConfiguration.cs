@@ -16,7 +16,7 @@ namespace Domain.EntityConfigurations
 
             builder.Property(x => x.ChatId).IsRequired(true);
             builder.HasOne(x => x.Chat)
-                .WithMany()
+                .WithMany(x => x.MemberBinds)
                 .HasForeignKey(x => x.ChatId)
                 .OnDelete(DeleteBehavior.Cascade);
 

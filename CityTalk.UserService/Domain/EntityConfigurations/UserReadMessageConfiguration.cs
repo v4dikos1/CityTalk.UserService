@@ -21,7 +21,7 @@ namespace Domain.EntityConfigurations
 
             builder.Property(x => x.MessageId).IsRequired(true);
             builder.HasOne(x => x.Message)
-                .WithMany()
+                .WithMany(x => x.WhoRead)
                 .HasForeignKey(x => x.MessageId)
                 .OnDelete(DeleteBehavior.Cascade);
 
