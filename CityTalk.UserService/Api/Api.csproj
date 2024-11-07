@@ -9,10 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.66.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+    <PackageReference Include="СityTalk.CommonLibrary" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>
 	<ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="$(NuGetPackageRoot)CityTalk.CommonLibrary*/contentFiles/*/$(TargetFramework)/Protos/*.proto" Link="Protos/%(Filename)%(Extesion)" />
+	</ItemGroup>
 </Project>
