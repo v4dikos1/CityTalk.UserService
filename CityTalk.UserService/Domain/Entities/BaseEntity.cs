@@ -5,6 +5,6 @@
         /// <summary>
         /// Идентификатор
         /// </summary>
-        public required T Id { get; set; }
+        public T Id { get; set; } = default!;
     }
 }

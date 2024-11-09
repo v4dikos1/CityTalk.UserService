@@ -1,11 +1,14 @@
-using Api.Services;
+using Api.Services.User;
 using Domain;
+using Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 Environment.SetEnvironmentVariable("ConnectionString", builder.Configuration.GetConnectionString("DbContext"));
 
 builder.Services.RegisterDataAccessService(builder.Configuration);
+
+builder.Services.RegisterUseCasesService();
 
 builder.Services.AddGrpc();
 
