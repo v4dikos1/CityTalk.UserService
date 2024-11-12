@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Domain.Entities
 {
-    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack, IEnumerable<Guid>
+    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack, IDisposable
     {
         /// <summary>
         /// Идентификатор пользователя внешней системы идентификации
@@ -51,12 +51,7 @@ namespace Domain.Entities
         /// </summary>
         public required bool IsDeleted { get; set; }
 
-        public IEnumerator<Guid> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
+        public void Dispose()
         {
             throw new NotImplementedException();
         }
