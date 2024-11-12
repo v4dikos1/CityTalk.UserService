@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.CompilerServices;
 
 namespace Domain
 {
@@ -17,6 +18,16 @@ namespace Domain
             });
 
             return services;
+        }
+
+        public static void SetConnectionStringEnvironment(this IApplicationBuilder app, string? value)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value), "Строка подключения не задана!");
+            }
+
+            Environment.SetEnvironmentVariable("ConnectionString", value);
         }
 
         public static void MigrateDb(this IApplicationBuilder app)
