@@ -1,9 +1,10 @@
 ﻿using Domain.Abstractions;
 using Domain.Enums;
+using System.Collections;
 
 namespace Domain.Entities
 {
-    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack
+    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack, IEnumerable<string>
     {
         /// <summary>
         /// Идентификатор пользователя внешней системы идентификации
@@ -49,5 +50,15 @@ namespace Domain.Entities
         /// Статус удаления
         /// </summary>
         public required bool IsDeleted { get; set; }
+
+        public IEnumerator<string> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
