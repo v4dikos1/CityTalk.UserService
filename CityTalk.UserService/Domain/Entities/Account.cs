@@ -1,9 +1,10 @@
 ﻿using Domain.Abstractions;
 using Domain.Enums;
+using System.Collections;
 
 namespace Domain.Entities
 {
-    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack, IDisposable
+    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack
     {
         /// <summary>
         /// Идентификатор пользователя внешней системы идентификации
@@ -49,10 +50,5 @@ namespace Domain.Entities
         /// Статус удаления
         /// </summary>
         public required bool IsDeleted { get; set; }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
