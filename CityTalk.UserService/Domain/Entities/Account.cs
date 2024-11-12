@@ -3,7 +3,7 @@ using Domain.Enums;
 
 namespace Domain.Entities
 {
-    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack
+    public class Account : BaseEntity<Guid>, IHaveDateTrack, IHaveDeleteTrack, IDisposable
     {
         /// <summary>
         /// Идентификатор пользователя внешней системы идентификации
@@ -49,5 +49,10 @@ namespace Domain.Entities
         /// Статус удаления
         /// </summary>
         public required bool IsDeleted { get; set; }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
