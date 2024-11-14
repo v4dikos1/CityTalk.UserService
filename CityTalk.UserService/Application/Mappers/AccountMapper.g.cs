@@ -32,18 +32,5 @@ namespace Application.Accounts
                 UpdatedAt = p2.UpdatedAt == null ? default(DateTimeOffset) : (DateTimeOffset)p2.UpdatedAt
             };
         }
-        public AccountListViewModel MapToListViewModel(Account p3)
-        {
-            return p3 == null ? null : new AccountListViewModel()
-            {
-                Id = p3.Id,
-                ExternalUserId = p3.ExternalUserId,
-                Type = p3.Type,
-                PathToProfilePicture = p3.PathToProfilePicture,
-                Description = p3.Description,
-                CreatedAt = p3.CreatedAt,
-                UpdatedAt = p3.UpdatedAt == null ? default(DateTimeOffset) : (DateTimeOffset)p3.UpdatedAt
-            };
-        }
     }
 }

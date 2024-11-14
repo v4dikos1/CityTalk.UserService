@@ -10,7 +10,6 @@ namespace Application.Accounts
     {
         Account MapToEntity((CreateAccountModel model, Guid externalUserId) src);
         AccountViewModel MapToViewModel(Account account);
-        AccountListViewModel MapToListViewModel(Account account);
     }
 
     partial class AccountMapper : IRegister

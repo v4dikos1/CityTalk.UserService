@@ -60,5 +60,36 @@ namespace Api.Services.User
 
             return response;
         }
+
+        public override async Task<AccountsListRsponse> GetAccountsList(GetAccountsListRequest request, ServerCallContext serverCallContext)
+        {
+            var query = new GetAccountsListQuery 
+            { 
+                Limit = request.Limit, 
+                Offset = request.Offset 
+            };
+
+            var result = await mediator.Send(query);
+            var resultList = new List<AccountResponse>();
+
+            for (int i = 0; i < result.Accounts.Count; i++)
+            {
+                resultList.Add(new AccountResponse
+                {
+                    Id = result.Accounts[i].Id.ToString(),
+                    ExternalUserId = result.Accounts[i].ExternalUserId.ToString(),
+                    Type = result.Accounts[i].Type.ToString(),
+                    PathToProfilePicture = result.Accounts[i].PathToProfilePicture,
+                    Descritpion = result.Accounts[i].Description,
+                    CreatedAt = result.Accounts[i].CreatedAt.ToString(),
+                    UpdatedAt = result.Accounts[i].UpdatedAt.ToString()
+                });
+            }
+
+            var response = new AccountsListRsponse();
+            response.Accounts.AddRange(resultList);
+
+            return response;
+        }
     }
 }

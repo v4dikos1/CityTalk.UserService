@@ -1,6 +1,7 @@
 ﻿namespace Application.Accounts.Dtos
 {
-    public class AccountListViewModel : AccountViewModel
+    public class AccountListViewModel
     {
+        public required List<AccountViewModel> Accounts { get; set; }
     }
 }
