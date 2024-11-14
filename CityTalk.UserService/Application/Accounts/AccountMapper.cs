@@ -9,6 +9,8 @@ namespace Application.Accounts
     public interface IAccountMapper
     {
         Account MapToEntity((CreateAccountModel model, Guid externalUserId) src);
+        AccountViewModel MapToViewModel(Account account);
+        AccountListViewModel MapToListViewModel(Account account);
     }
 
     partial class AccountMapper : IRegister
@@ -17,11 +19,19 @@ namespace Application.Accounts
         {
             config.NewConfig<(CreateAccountModel Model, Guid ExternalUserId), Account>()
                 .Map(d => d.ExternalUserId, src => src.ExternalUserId)
-                .Map(d => d.Description, src => src.Model.Description)
                 .Map(d => d.PathToProfilePicture, src => src.Model.PathToProfilePicture)
                 .Map(d => d.Type, src => AccountTypeEnum.Error)
                 .Map(d => d.IsDeleted, src => false)
                 .Map(d => d.CreatedAt, src => DateTimeOffset.UtcNow);
+
+            config.NewConfig<Account, AccountViewModel>()
+                .Map(d => d.Id, src => src.Id)
+                .Map(d => d.ExternalUserId, src => src.ExternalUserId)
+                .Map(d => d.Type, src => src.Type)
+                .Map(d => d.PathToProfilePicture, src => src.PathToProfilePicture)
+                .Map(d => d.Description, src => src.Description)
+                .Map(d => d.CreatedAt, src => src.CreatedAt)
+                .Map(d => d.UpdatedAt, src => src.UpdatedAt);
         }
     }
 }

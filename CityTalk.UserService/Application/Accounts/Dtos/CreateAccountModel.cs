@@ -8,9 +8,19 @@
         public required bool IsBusiness { get; set; }
 
         /// <summary>
-        /// Описание
+        /// Имя пользователя
         /// </summary>
-        public string? Description { get; set; }
+        public required string Username { get; set; }
+
+        /// <summary>
+        /// Электронная почта
+        /// </summary>
+        public required string Email { get; set; }
+
+        /// <summary>
+        /// Пароль
+        /// </summary>
+        public required string Password { get; set; }
 
         /// <summary>
         /// Аватарка
