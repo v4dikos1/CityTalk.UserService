@@ -53,7 +53,7 @@ namespace Api.Services.User
                 ExternalUserId = result.ExternalUserId.ToString(),
                 Type = result.Type.ToString(),
                 PathToProfilePicture = result.PathToProfilePicture,
-                Descritpion = result.Description,
+                Description = result.Description,
                 CreatedAt = result.CreatedAt.ToString(),
                 UpdatedAt = result.UpdatedAt.ToString()
             };
@@ -80,7 +80,7 @@ namespace Api.Services.User
                     ExternalUserId = result.Accounts[i].ExternalUserId.ToString(),
                     Type = result.Accounts[i].Type.ToString(),
                     PathToProfilePicture = result.Accounts[i].PathToProfilePicture,
-                    Descritpion = result.Accounts[i].Description,
+                    Description = result.Accounts[i].Description,
                     CreatedAt = result.Accounts[i].CreatedAt.ToString(),
                     UpdatedAt = result.Accounts[i].UpdatedAt.ToString()
                 });

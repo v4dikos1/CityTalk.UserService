@@ -1,7 +1,7 @@
 ﻿using Abstractions.Services;
 using Application.Accounts.Dtos;
 using Application.Accounts.Queries;
-using Core.Exceptions;
+using CommonLibrary.Exceptions;
 using Domain;
 using Mapster;
 using MediatR;

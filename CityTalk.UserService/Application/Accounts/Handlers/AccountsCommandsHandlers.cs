@@ -1,9 +1,8 @@
 ﻿using Abstractions.Models;
 using Abstractions.Services;
 using Application.Users.Commands;
-using Core.Exceptions;
+using CommonLibrary.Exceptions;
 using Domain;
-using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 
