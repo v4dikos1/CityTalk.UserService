@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -12,7 +12,6 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.66.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
-    <PackageReference Include="СityTalk.CommonLibrary" Version="1.0.11" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,13 +21,7 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="$(NuGetPackageRoot)CityTalk.CommonLibrary*/contentFiles/*/$(TargetFramework)/Protos/*.proto" Link="Protos/%(Filename)%(Extesion)" />
+		<Protobuf Include="$(NuGetPackageRoot)CityTalk.CommonLibrary*/contentFiles/*/$(TargetFramework)/Protos/*.proto" Link="Protos/%(Filename)%(Extesion)" GrpcServices="Server" />
 	</ItemGroup>
 
-	<Target Name="Mapster" AfterTargets="AfterBuild">
-		<Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore" />
-		<Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster model -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
-		<Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster extension -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
-		<Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster mapper -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
-	</Target>
 </Project>

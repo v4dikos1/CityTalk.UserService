@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{4EDCF537-23E6-45F1-8FF4-FA13AF602AA1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{80D11B4A-7DC9-41AD-9FD1-119D0D857FB5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{90965032-C145-4776-9475-B6002F71DF50} = {90965032-C145-4776-9475-B6002F71DF50}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{FA543D97-3CD6-484B-BDD5-5D1EBC1460D4}"
 EndProject

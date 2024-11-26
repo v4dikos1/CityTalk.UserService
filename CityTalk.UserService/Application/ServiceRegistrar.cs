@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using Google.Protobuf.Collections;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -40,6 +41,12 @@ namespace Application
                 var mapperImplementation = mapperImplementations.First();
                 services.AddScoped(mapperInterface, mapperImplementation);
             }
+
+            TypeAdapterConfig.GlobalSettings.Default
+                .UseDestinationValue(member => member.SetterModifier == AccessModifier.None &&
+                                               member.Type.IsGenericType &&
+                                               member.Type.GetGenericTypeDefinition() == typeof(RepeatedField<>));
+
             return services;
         }
     }

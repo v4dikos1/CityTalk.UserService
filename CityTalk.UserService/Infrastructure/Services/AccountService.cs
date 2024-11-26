@@ -1,5 +1,5 @@
 ﻿using Abstractions.Services;
-using Core.Exceptions;
+using CommonLibrary.Exceptions;
 using Domain;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
