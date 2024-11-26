@@ -32,8 +32,8 @@ namespace Application.Accounts.Handlers
                 .OrderBy(x => x.CreatedAt);
 
             var accountsList = await accountsQuery
-                .Take(request.Limit)
                 .Skip(request.Offset)
+                .Take(request.Limit)
                 .ToListAsync(cancellationToken);
 
             return accountMapper.MapToAccountsListResponse(accountsList);
