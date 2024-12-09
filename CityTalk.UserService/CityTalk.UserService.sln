@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{4EDCF537-23E6-45F1-8FF4-FA13AF602AA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{80D11B4A-7DC9-41AD-9FD1-119D0D857FB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{80D11B4A-7DC9-41AD-9FD1-119D0D857FB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keycloak", "Keycloak\Keycloak.csproj", "{3F34F31A-A09B-44BE-B3CB-71AF4E3C680D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{80D11B4A-7DC9-41AD-9FD1-119D0D857FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D11B4A-7DC9-41AD-9FD1-119D0D857FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D11B4A-7DC9-41AD-9FD1-119D0D857FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F34F31A-A09B-44BE-B3CB-71AF4E3C680D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F34F31A-A09B-44BE-B3CB-71AF4E3C680D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F34F31A-A09B-44BE-B3CB-71AF4E3C680D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F34F31A-A09B-44BE-B3CB-71AF4E3C680D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
